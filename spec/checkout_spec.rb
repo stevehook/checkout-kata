@@ -1,3 +1,5 @@
+require_relative '../lib/checkout'
+
 RSpec.describe Checkout do
   let(:rules) { {} }
   subject { Checkout.new(rules) }
