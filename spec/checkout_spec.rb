@@ -7,4 +7,9 @@ RSpec.describe Checkout do
   it 'initial total is zero' do
     expect(subject.total).to eql 0
   end
+
+  it 'can scan items' do
+    subject.scan('001')
+    expect(subject.total).to eql BigDecimal.new('9.25')
+  end
 end
