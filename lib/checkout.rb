@@ -1,5 +1,6 @@
 require 'bigdecimal'
 require_relative './checkout/total_spend_promotion'
+require_relative './checkout/multi_buy_promotion'
 
 class Checkout
   CheckoutItem = Struct.new(:product_code, :name, :price)

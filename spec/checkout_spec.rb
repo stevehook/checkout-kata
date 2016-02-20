@@ -25,6 +25,7 @@ RSpec.describe Checkout do
 
   context 'with rules' do
     let(:rules) { [
+      Checkout::MultiBuyPromotion.new('001', BigDecimal('8.50'), 2),
       Checkout::TotalSpendPromotion.new(BigDecimal('60.0'), 10)
     ] }
 
