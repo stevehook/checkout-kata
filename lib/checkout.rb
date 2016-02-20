@@ -3,10 +3,11 @@ require 'bigdecimal'
 class Checkout
   attr_reader :total
 
+  CheckoutItem = Struct.new(:product_code, :name, :price)
   ITEMS = {
-    '001' => { name: 'Lavender heart', price: BigDecimal('9.25') },
-    '002' => { name: 'Personalised cufflinks', price: BigDecimal('45.0') },
-    '003' => { name: 'Kids T-shirt', price: BigDecimal('19.95') }
+    '001' => CheckoutItem.new('001', 'Lavender heart', BigDecimal('9.25')),
+    '002' => CheckoutItem.new('002', 'Personalised cufflinks', BigDecimal('45.0')),
+    '003' => CheckoutItem.new('003', 'Kids T-shirt', BigDecimal('19.95'))
   }
 
   def initialize(rules)
@@ -16,6 +17,6 @@ class Checkout
 
   def scan(item_code)
     item = ITEMS[item_code]
-    @total += item[:price]
+    @total += item.price
   end
 end
