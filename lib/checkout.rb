@@ -1,4 +1,5 @@
 require 'bigdecimal'
+require_relative './checkout/total_spend_promotion'
 
 class Checkout
   attr_reader :total

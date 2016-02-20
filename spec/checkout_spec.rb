@@ -25,7 +25,7 @@ RSpec.describe Checkout do
 
   context 'with rules' do
     let(:rules) { [
-      Checkout::TotalSpendDiscount(BigDecimal('60.0'), 10)
+      Checkout::TotalSpendPromotion.new(BigDecimal('60.0'), 10)
     ] }
 
     it 'can scan items' do
