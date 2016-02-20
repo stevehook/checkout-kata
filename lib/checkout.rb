@@ -19,6 +19,13 @@ class Checkout
   end
 
   def total
-    @items.inject(0) { |total, next_item| total + next_item.price }
+    undiscounted_total = @items.inject(0) { |total, next_item| total + next_item.price }
+    apply_promotions_to_total(undiscounted_total)
+  end
+
+  private
+
+  def apply_promotions_to_total(undiscounted_total)
+    @rules.inject(undiscounted_total) { |last_total, rule| rule.apply_to_total(last_total) }
   end
 end
