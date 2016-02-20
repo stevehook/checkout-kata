@@ -2,8 +2,6 @@ require 'bigdecimal'
 require_relative './checkout/total_spend_promotion'
 
 class Checkout
-  attr_reader :total
-
   CheckoutItem = Struct.new(:product_code, :name, :price)
   ITEMS = {
     '001' => CheckoutItem.new('001', 'Lavender heart', BigDecimal('9.25')),
@@ -12,12 +10,15 @@ class Checkout
   }
 
   def initialize(rules)
-    @total = BigDecimal('0')
+    @items = []
     @rules = rules
   end
 
   def scan(item_code)
-    item = ITEMS[item_code]
-    @total += item.price
+    @items << ITEMS[item_code]
+  end
+
+  def total
+    @items.inject(0) { |total, next_item| total + next_item.price }
   end
 end
