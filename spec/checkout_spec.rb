@@ -39,5 +39,12 @@ RSpec.describe Checkout do
       subject.scan('003')
       expect(subject.total).to eql BigDecimal('66.78')
     end
+
+    it 'can scan multiple items and applies multibuy discount' do
+      subject.scan('001')
+      subject.scan('003')
+      subject.scan('001')
+      expect(subject.total).to eql BigDecimal('36.95')
+    end
   end
 end
