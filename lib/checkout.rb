@@ -31,6 +31,10 @@ class Checkout
   end
 
   def price_with_promotions(checkout_item)
-    checkout_item.price
+    @rules.inject(checkout_item.price) { |last_price, rule| rule.apply_to_price(last_price, item_count(checkout_item)) }
+  end
+
+  def item_count(checkout_item)
+    @items.select { |item| item.product_code == checkout_item.product_code }.count
   end
 end
