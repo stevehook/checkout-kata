@@ -11,6 +11,6 @@ RSpec.describe Checkout do
 
   it 'can scan items' do
     subject.scan('001')
-    expect(subject.total).to eql BigDecimal.new('9.25')
+    expect(subject.total).to eql BigDecimal('9.25')
   end
 end
