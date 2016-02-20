@@ -5,4 +5,7 @@ class Checkout
     @total = 0
     @rules = rules
   end
+
+  def scan(item_code)
+  end
 end

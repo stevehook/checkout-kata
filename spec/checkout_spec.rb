@@ -1,4 +1,5 @@
 require_relative '../lib/checkout'
+require 'bigdecimal'
 
 RSpec.describe Checkout do
   let(:rules) { {} }
