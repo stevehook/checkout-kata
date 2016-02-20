@@ -24,6 +24,10 @@ RSpec.describe Checkout do
   end
 
   context 'with rules' do
+    let(:rules) { [
+      Checkout::TotalSpendDiscount(BigDecimal('60.0'), 10)
+    ] }
+
     it 'can scan items' do
       subject.scan('001')
       expect(subject.total).to eql BigDecimal('9.25')
