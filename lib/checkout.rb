@@ -20,8 +20,8 @@ class Checkout
   end
 
   def total
-    undiscounted_total = @items.inject(0) { |total, next_item| total + price_with_promotions(next_item) }
-    apply_promotions_to_total(undiscounted_total)
+    undiscounted_total = @items.inject(BigDecimal('0')) { |total, next_item| total + price_with_promotions(next_item) }
+    apply_promotions_to_total(undiscounted_total).round(2)
   end
 
   private

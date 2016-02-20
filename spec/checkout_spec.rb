@@ -6,7 +6,7 @@ RSpec.describe Checkout do
   subject { Checkout.new(rules) }
 
   it 'initial total is zero' do
-    expect(subject.total).to eql 0
+    expect(subject.total).to eql BigDecimal('0.0')
   end
 
   context 'without rules' do
